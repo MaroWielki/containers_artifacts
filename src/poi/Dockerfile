@@ -46,7 +46,7 @@ ARG IMAGE_SOURCE_REVISION
 
 ENV SQL_USER="sa" \
     SQL_PASSWORD="SQLpassword123#" \
-    SQL_SERVER="localhost" \
+    SQL_SERVER="sqlserver" \
     SQL_DBNAME="mydrivingDB" \
     WEB_PORT=80 \
     WEB_SERVER_BASE_URI="http://0.0.0.0" \
