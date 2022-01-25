@@ -1,0 +1,1 @@
+docker run -it --rm --mount type=bind,source=/home/azureuser/containers_artifacts/src/userprofile/secrets,target=/secrets --add-host=sqlserver:172.17.0.2 -p 8081:80 --name userprofile registrypqr2110.azurecr.io/userprofile:1.0
