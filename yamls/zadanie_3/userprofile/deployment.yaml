@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userprofile
+  labels:
+    app: userprofile
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: userprofile
+  template:
+    metadata:
+      labels:
+        app: userprofile
+    spec:
+      containers:
+      - name: userprofile
+        image: registrypqr2110.azurecr.io/userprofile:1.0 
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: secrets
+          mountPath: "/secrets"
+          readOnly: true
+      volumes:
+      - name: secrets
+        secret:
+          secretName: sqlconn
