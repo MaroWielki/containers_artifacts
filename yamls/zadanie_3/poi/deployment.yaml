@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poi 
+  labels:
+    app: poi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: poi
+  template:
+    metadata:
+      labels:
+        app: poi
+    spec:
+      containers:
+      - name: poi
+        image: registrypqr2110.azurecr.io/poi:1.0 
+        ports:
+        - containerPort: 80
+        envFrom:
+        - secretRef:
+            name: sqlconn  
