@@ -14,20 +14,13 @@ spec:
     metadata:
       labels:
         app: user-java
+        aadpodidbinding: my-pod-identity
     spec:
       containers:
       - name: user-java
         image: registrypqr2110.azurecr.io/user-java:1.0 
         ports:
         - containerPort: 80
-        volumeMounts:
-        - name: secrets-store01-inline
-          mountPath: "/secrets"
-          readOnly: true
-      volumes:
-        - name: secrets-store01-inline
-          csi:
-            driver: secrets-store.csi.k8s.io
-            readOnly: true
-            volumeAttributes:
-              secretProviderClass: "azure-kv4akst4-user-msi"
+        envFrom:
+        - configMapRef:
+            name: sqlserver
