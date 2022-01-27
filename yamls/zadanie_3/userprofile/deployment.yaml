@@ -26,5 +26,8 @@ spec:
           readOnly: true
       volumes:
       - name: secrets
-        secret:
-          secretName: sqlconn
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: "azure-kv4akst4-user-msi"
